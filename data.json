@@ -2,19 +2,15 @@
   "users": {
     "alice": {
       "roles": ["admin"]
-      }
     },
     "bob": {
       "roles": ["employee", "billing"]
-      }
     },
      "sunil": {
       "roles": ["guest"]
-      }
     },
     "eve": {
       "roles": ["customer"]
-      }
     }
   },
   "role_permissions": {
