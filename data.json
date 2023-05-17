@@ -4,7 +4,7 @@
       "roles": ["admin"]
     },
     "bob": {
-      "roles": ["employee", "billing"]
+      "roles": ["employee", "billing","admin"]
     },
      "sunil": {
       "roles": ["guest"]
