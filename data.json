@@ -4,71 +4,22 @@
       "roles": ["admin"]
     },
     "bob": {
-      "roles": ["employee", "billing","admin"]
+      "roles": ["customer"]
     },
      "sunil": {
-      "roles": ["guest"]
+      "roles": ["validator"]
     },
     "eve": {
       "roles": ["customer"]
     }
   },
   "role_permissions": {
-    "customer": [
+    "validator": [
       {
-        "action": "read",
-        "type": "dog"
-      },
-      {
-        "action": "read",
-        "type": "cat"
-      },
-      {
-        "action": "adopt",
-        "type": "dog"
-      },
-      {
-        "action": "adopt",
-        "type": "cat"
+        "path": "validate",
+        "type": "get"
       }
-    ],
-    "employee": [
-      {
-        "action": "read",
-        "type": "dog"
-      },
-      {
-        "action": "read",
-        "type": "cat"
-      },
-      {
-        "action": "update",
-        "type": "dog"
-      },
-      {
-        "action": "update",
-        "type": "cat"
-      }
-    ],
-    "billing": [
-      {
-        "action": "read",
-        "type": "finance"
-      },
-      {
-        "action": "update",
-        "type": "finance"
-      }
-    ],
-    "guest": [
-     {
-       "action": "read",
-       "type": "cat"
-     },
-     {
-       "action": "read",
-       "type": "finance"
-     }
     ]
+   
   }
 }
