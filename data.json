@@ -17,7 +17,7 @@
     "validator": [
       {
         "path": "validate",
-        "type": "get"
+        "method": "GET"
       }
     ]
    
