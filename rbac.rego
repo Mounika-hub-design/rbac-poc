@@ -1,8 +1,9 @@
 # Role-based Access Control (RBAC)
 # --------------------------------
 #
-# This example defines an RBAC model for a Pet Store API. The Pet Store API allows
-# users to look at pets, adopt them, update their stats, and so on. The policy
+# This example defines an RBAC model for a validator API. The Validator API allows
+# users who are admin to validate new env and existing env (POST and GET Methods), users with validate permission 
+# can validate existing env (GET method). The policy
 # controls which users can perform actions on which resources. The policy implements
 # a classic Role-based Access Control model where users are assigned to roles and
 # roles are granted the ability to perform some action(s) on some type of resource.
@@ -29,20 +30,6 @@ allow {
 	user_is_admin
 }
 
-# Allow bob to do anything
-#allow {
-#	input.user == "bob"
-#}
-
-# you can ignore this rule, it's simply here to create a dependency
-# to another rego policy file, so we can demonstate how to work with
-# an explicit manifest file (force order of policy loading).
-#allow {
-#	input.matching_policy.grants
-#	input.roles
-#	utils.hasPermission(input.matching_policy.grants, input.roles)
-#}
-
 # Allow the action if the user is granted permission to perform the action.
 allow {
 	# Find permissions for the user.
@@ -50,12 +37,9 @@ allow {
 	user_is_granted[permission]
 
 	# Check if the permission permits the action.
-	input.action == permission.action
+	input.path == permission.path
 	input.type == permission.type
 
-	# unless user location is outside US
-	# country := data.users[input.user].location.country
-	# country == "US"
 }
 
 # user_is_admin is true if...
@@ -65,24 +49,6 @@ user_is_admin {
 
 	# "admin" is the `i`-th element in the user->role mappings for the identified user.
 	data.users[input.user].roles[i] == "admin"
-}
-
-# user_is_viewer is true if...
-user_is_viewer {
-	# for some `i`...
-	some i
-
-	# "viewer" is the `i`-th element in the user->role mappings for the identified user.
-	data.users[input.user].roles[i] == "viewer"
-}
-
-# user_is_guest is true if...
-user_is_guest {
-	# for some `i`...
-	some i
-
-	# "guest" is the `i`-th element in the user->role mappings for the identified user.
-	data.users[input.user].roles[i] == "guest"
 }
 
 
