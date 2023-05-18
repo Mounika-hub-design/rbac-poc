@@ -38,7 +38,7 @@ allow {
 
 	# Check if the permission permits the action.
 	input.path == permission.path
-	input.type == permission.type
+	input.method == permission.method
 
 }
 
