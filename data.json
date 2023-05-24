@@ -16,7 +16,7 @@
   "role_permissions": {
     "validator": [
       {
-        "path": "validate",
+        "path": "/validate",
         "method": "GET"
       }
     ]
